@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Sistema_lojaKX.Models;
 using Sistema_lojaKX.Repositories.Interfaces;
 

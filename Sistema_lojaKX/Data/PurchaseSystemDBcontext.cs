@@ -1,15 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sistema_lojaKX.Map;
+using Sistema_lojaKX.Data.Map;
 using Sistema_lojaKX.Models;
 
 namespace Sistema_lojaKX.Data
 {
     public class PurchaseSystemDBcontext : DbContext
     {
-        public PurchaseSystemDBcontext()
-        {
-
-        }
         public PurchaseSystemDBcontext(DbContextOptions<PurchaseSystemDBcontext> options) : base(options)
         {
         }

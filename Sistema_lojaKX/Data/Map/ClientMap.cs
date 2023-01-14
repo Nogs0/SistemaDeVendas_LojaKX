@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sistema_lojaKX.Models;
 
-namespace Sistema_lojaKX.Map
+namespace Sistema_lojaKX.Data.Map
 {
     public class ClientMap : IEntityTypeConfiguration<ClientModel>
     {

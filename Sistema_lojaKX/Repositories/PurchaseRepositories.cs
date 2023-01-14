@@ -18,7 +18,6 @@ namespace Sistema_lojaKX.Repositories
             await _dbcontext.SaveChangesAsync();
             return purchase;
         }
-
         public async Task<List<PurchaseModel>> GetAllPurchases()
         {
             if (_dbcontext.Purchases == null)
@@ -29,8 +28,8 @@ namespace Sistema_lojaKX.Repositories
 
         public async Task<PurchaseModel> GetPurchaseByCPF(string cpf)
         {
-            PurchaseModel purchase = await _dbcontext.Purchases.FirstOrDefaultAsync(x => x.CPF == cpf);
-            if(purchase == null)
+            PurchaseModel purchase = await _dbcontext.Purchases.FirstOrDefaultAsync(x => x.ClientCPF == cpf);
+            if (purchase == null)
             {
                 throw new Exception($"There is no purchase in this CPF : {cpf}");
             }

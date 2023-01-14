@@ -23,7 +23,8 @@ namespace Sistema_lojaKX
                     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
                 );
             builder.Services.AddScoped<IClientRepositories, ClientRepositories>();
-
+            builder.Services.AddScoped<IPurchaseRepositories, PurchaseRepositories>();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -32,7 +33,7 @@ namespace Sistema_lojaKX
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
