@@ -14,6 +14,9 @@ namespace Sistema_lojaKX.Data.Map
             builder.Property(x => x.Email).IsRequired().HasMaxLength(150);
             builder.Property(x => x.PhoneNumber).IsRequired().HasMaxLength(20);
             builder.Property(x => x.Address).HasMaxLength(400);
+            builder.Property(x => x.PurchaseId);
+
+            builder.HasOne(x => x.Purchase);
         }
     }
 }

@@ -11,9 +11,6 @@ namespace Sistema_lojaKX.Data.Map
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Value).IsRequired().HasMaxLength(150);
             builder.Property(x => x.Product).HasMaxLength(100);
-            builder.Property(x => x.ClientCPF);
-
-            builder.HasOne(x => x.Client);
         }
     }
 }

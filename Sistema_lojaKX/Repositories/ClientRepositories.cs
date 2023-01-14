@@ -14,13 +14,17 @@ namespace Sistema_lojaKX.Repositories
         }
         public async Task<List<ClientModel>> GetAllClients()
         {
-            return await _dbcontext.Clients.ToListAsync(); 
+            return await _dbcontext.Clients
+                .Include(x => x.Purchase)
+                .ToListAsync(); 
         }
 
 
         public async Task<ClientModel> GetClientByCPF(string cpf)
         {
-            return await _dbcontext.Clients.FirstOrDefaultAsync(x => x.CPF == cpf);
+            return await _dbcontext.Clients
+                .Include(x => x.Purchase)
+                .FirstOrDefaultAsync(x => x.CPF == cpf);
         }
         public async Task<ClientModel> AddClient(ClientModel client)
         {

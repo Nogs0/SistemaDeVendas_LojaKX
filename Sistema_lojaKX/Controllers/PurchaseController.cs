@@ -29,9 +29,9 @@ namespace Sistema_lojaKX.Controllers
         }
 
         [HttpGet("{cpf}")]
-        public async Task<ActionResult<PurchaseModel>> GetPurchaseByCPF(string cpf)
+        public async Task<ActionResult<PurchaseModel>> GetPurchaseById(int id)
         {
-            PurchaseModel purchase = await _purchaseRepositories.GetPurchaseByCPF(cpf);
+            PurchaseModel purchase = await _purchaseRepositories.GetPurchaseById(id);
             return Ok(purchase);
         }
 

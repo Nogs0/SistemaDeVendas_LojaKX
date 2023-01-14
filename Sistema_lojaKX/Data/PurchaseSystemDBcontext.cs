@@ -9,7 +9,6 @@ namespace Sistema_lojaKX.Data
         public PurchaseSystemDBcontext(DbContextOptions<PurchaseSystemDBcontext> options) : base(options)
         {
         }
-
         public DbSet<ClientModel> Clients { get; set; }
         public DbSet<PurchaseModel> Purchases { get; set; }
 

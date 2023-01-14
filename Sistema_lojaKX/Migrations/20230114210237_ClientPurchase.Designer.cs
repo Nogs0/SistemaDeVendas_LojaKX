@@ -12,8 +12,8 @@ using Sistema_lojaKX.Data;
 namespace Sistema_lojaKX.Migrations
 {
     [DbContext(typeof(PurchaseSystemDBcontext))]
-    [Migration("20230114232852_PurchaseClient")]
-    partial class PurchaseClient
+    [Migration("20230114210237_ClientPurchase")]
+    partial class ClientPurchase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,7 +56,12 @@ namespace Sistema_lojaKX.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int?>("PurchaseId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PurchaseId");
 
                     b.ToTable("Clients");
                 });
@@ -69,13 +74,8 @@ namespace Sistema_lojaKX.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("ClientCPF")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ClientId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Product")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -85,18 +85,16 @@ namespace Sistema_lojaKX.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
-
                     b.ToTable("Purchases");
                 });
 
-            modelBuilder.Entity("Sistema_lojaKX.Models.PurchaseModel", b =>
+            modelBuilder.Entity("Sistema_lojaKX.Models.ClientModel", b =>
                 {
-                    b.HasOne("Sistema_lojaKX.Models.ClientModel", "Client")
+                    b.HasOne("Sistema_lojaKX.Models.PurchaseModel", "Purchase")
                         .WithMany()
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("PurchaseId");
 
-                    b.Navigation("Client");
+                    b.Navigation("Purchase");
                 });
 #pragma warning restore 612, 618
         }

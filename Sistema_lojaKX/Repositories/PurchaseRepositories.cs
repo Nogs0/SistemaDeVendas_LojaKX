@@ -26,15 +26,14 @@ namespace Sistema_lojaKX.Repositories
 
         }
 
-        public async Task<PurchaseModel> GetPurchaseByCPF(string cpf)
+        public async Task<PurchaseModel> GetPurchaseById(int id)
         {
-            PurchaseModel purchase = await _dbcontext.Purchases.FirstOrDefaultAsync(x => x.ClientCPF == cpf);
+            PurchaseModel purchase = await _dbcontext.Purchases.FirstOrDefaultAsync(x => x.Id == id);
             if (purchase == null)
             {
-                throw new Exception($"There is no purchase in this CPF : {cpf}");
+                throw new Exception($"There is no purchase with this Id : {id}");
             }
             return purchase;
         }
-
     }
 }
