@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Sistema_lojaKX.Map;
 using Sistema_lojaKX.Models;
 
 namespace Sistema_lojaKX.Data
@@ -14,6 +15,8 @@ namespace Sistema_lojaKX.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ClientMap());
+            modelBuilder.ApplyConfiguration(new PurchaseMap());
             base.OnModelCreating(modelBuilder);
         }
     }

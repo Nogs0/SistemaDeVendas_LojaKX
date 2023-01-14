@@ -8,6 +8,6 @@ namespace Sistema_lojaKX.Models
         public string? CPF { get; set; }
         public double Value { get; set; }
         public PurchaseStatus Status { get; set; }
-        public ProductEnums Product { get; set; }
+        public string? Product { get; set; }
     }
 }
