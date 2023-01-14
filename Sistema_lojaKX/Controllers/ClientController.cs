@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sistema_lojaKX.Models;
+using Sistema_lojaKX.Repositories.Interfaces;
 
 namespace Sistema_lojaKX.Controllers
 {
@@ -8,16 +9,46 @@ namespace Sistema_lojaKX.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<List<ClientModel>> GetClients()
+        private readonly IClientRepositories _clientRepositories;
+        public ClientController(IClientRepositories clientRepositories)
         {
-            return Ok();
+            _clientRepositories= clientRepositories;
+        }
+        [HttpPost]
+        public async Task<ActionResult<ClientModel>> AddClient([FromBody] ClientModel clientModel)
+        {
+            ClientModel client = await _clientRepositories.AddClient(clientModel);
+            return Ok(client);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<ClientModel> GetClientById(int id)
+        [HttpGet]
+        public async Task<ActionResult<List<ClientModel>>> GetClients()
         {
-            return Ok();
+            List<ClientModel> clients = await _clientRepositories.GetAllClients();
+            return Ok(clients);
+        }
+
+
+        [HttpGet("{cpf}")]
+        public async Task<ActionResult<ClientModel>> GetClientByCPF(string cpf)
+        {
+            ClientModel client = await _clientRepositories.GetClientByCPF(cpf);
+            return Ok(client);
+        }
+
+        [HttpPut("{cpf}")]
+        public async Task<ActionResult<ClientModel>> UpdateClientByCPF(ClientModel _client, string cpf)
+        {
+            _client.CPF= cpf;
+            ClientModel client = await _clientRepositories.UpdateClientByCPF(_client, cpf);
+            return Ok(client);
+        }
+
+        [HttpDelete("{cpf}")]
+        public async Task<ActionResult<ClientModel>> DeleteClientByCPF(string cpf)
+        {
+            bool delete = await _clientRepositories.DeleteClientByCPF(cpf);
+            return Ok(delete);
         }
     }
 }

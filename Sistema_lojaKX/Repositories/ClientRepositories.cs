@@ -17,13 +17,10 @@ namespace Sistema_lojaKX.Repositories
             return await _dbcontext.Clients.ToListAsync(); 
         }
 
-        public async Task<ClientModel> GetClientById(int id)
+
+        public async Task<ClientModel> GetClientByCPF(string cpf)
         {
-            return await _dbcontext.Clients.FirstOrDefaultAsync(x => x.Id == id);
-        }
-        public async Task<ClientModel> GetClientByCPF(string CPF)
-        {
-            return await _dbcontext.Clients.FirstOrDefaultAsync(x => x.CPF == CPF);
+            return await _dbcontext.Clients.FirstOrDefaultAsync(x => x.CPF == cpf);
         }
         public async Task<ClientModel> AddClient(ClientModel client)
         {
@@ -48,36 +45,17 @@ namespace Sistema_lojaKX.Repositories
 
             return clientByCPF;
         }
-        public async Task<ClientModel> UpdateClientById(ClientModel client, int id)
+        public async Task<bool> DeleteClientByCPF(string CPF)
         {
-            ClientModel clientById = await GetClientById(id);
-            if (clientById == null)
-            {
-                throw new Exception($"Client for ID: {id} is not found!");
-            }
-            clientById.Address = client.Address;
-            clientById.Name = client.Name;
-            clientById.PhoneNumber = client.PhoneNumber;
-            clientById.Email = client.Email;
-            clientById.CPF= client.CPF;
-
-            _dbcontext.Update(clientById);
-            await _dbcontext.SaveChangesAsync();
-
-            return clientById;
-        }
-
-        public async Task<bool> DeleteClient(string CPF)
-        {
-            ClientModel clientById = await GetClientByCPF(CPF);
-            if (clientById == null)
+            ClientModel clientByCPF= await GetClientByCPF(CPF);
+            if (clientByCPF == null)
             {
                 throw new Exception($"Client for CPF: {CPF} is not found!");
             }
-            _dbcontext.Clients.Remove(clientById);
+            _dbcontext.Clients.Remove(clientByCPF);
             await _dbcontext.SaveChangesAsync();
             return true;
-        } 
-        
+        }
+
     }
 }

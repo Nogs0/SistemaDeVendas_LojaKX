@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Sistema_lojaKX.Data;
+using Sistema_lojaKX.Repositories;
+using Sistema_lojaKX.Repositories.Interfaces;
+
 namespace Sistema_lojaKX
 {
     public class Program
@@ -12,6 +17,12 @@ namespace Sistema_lojaKX
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<PurchaseSystemDBcontext>(
+                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+                );
+            builder.Services.AddScoped<IClientRepositories, ClientRepositories>();
 
             var app = builder.Build();
 

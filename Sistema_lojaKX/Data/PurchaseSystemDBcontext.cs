@@ -6,6 +6,10 @@ namespace Sistema_lojaKX.Data
 {
     public class PurchaseSystemDBcontext : DbContext
     {
+        public PurchaseSystemDBcontext()
+        {
+
+        }
         public PurchaseSystemDBcontext(DbContextOptions<PurchaseSystemDBcontext> options) : base(options)
         {
         }
