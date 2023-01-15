@@ -12,6 +12,6 @@ Utilizado nesse projeto:
     <br>- Microsoft Entity Framework.SqlServer
     <br>- SQL Server
 
-## :boom:Acesso às instruções para rodar o projeto:
+## :heavy_check_mark:Acesso às instruções para rodar o projeto:
 Instruções para rodar o projeto: [Wiki](https://github.com/Nogs0/SistemaDeVendas_LojaKX/wiki).
 
