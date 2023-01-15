@@ -28,9 +28,16 @@ namespace Sistema_lojaKX.Repositories
         }
         public async Task<ClientModel> AddClient(ClientModel client)
         {
-            await _dbcontext.Clients.AddAsync(client);
-            await _dbcontext.SaveChangesAsync();
-            return client;
+            ClientModel clientByCPF = await GetClientByCPF(client.CPF);
+
+            if (clientByCPF == null)
+            {
+                await _dbcontext.Clients.AddAsync(client);
+                await _dbcontext.SaveChangesAsync();
+                return client;
+            }
+
+             throw new Exception($"Client already exists!");
         }
         public async Task<ClientModel> UpdateClientByCPF(ClientModel client, string CPF)
         {
