@@ -15,20 +15,15 @@ namespace Sistema_lojaKX.Repositories
         public async Task<List<ClientModel>> GetAllClients()
         {
             return await _dbcontext.Clients
-                .Include(x => x.Purchase)
                 .ToListAsync(); 
         }
-
-
         public async Task<ClientModel> GetClientByCPF(string cpf)
         {
-            return await _dbcontext.Clients
-                .Include(x => x.Purchase)
-                .FirstOrDefaultAsync(x => x.CPF == cpf);
+            return await _dbcontext.Clients.FirstOrDefaultAsync(x => x.Cpf == cpf);
         }
         public async Task<ClientModel> AddClient(ClientModel client)
         {
-            ClientModel clientByCPF = await GetClientByCPF(client.CPF);
+            ClientModel clientByCPF = await GetClientByCPF(client.Cpf);
 
             if (clientByCPF == null)
             {
@@ -46,8 +41,8 @@ namespace Sistema_lojaKX.Repositories
             {
                 throw new Exception($"Client for CPF: {CPF} is not found!");
             }
-            clientByCPF.Address = client.Address;
-            clientByCPF.Name= client.Name;
+
+            clientByCPF.Name_Client= client.Name_Client;
             clientByCPF.PhoneNumber = client.PhoneNumber;
             clientByCPF.Email = client.Email;
 

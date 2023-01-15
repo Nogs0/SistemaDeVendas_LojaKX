@@ -7,5 +7,6 @@ namespace Sistema_lojaKX.Repositories.Interfaces
         Task<List<PurchaseModel>> GetAllPurchases();
         Task<PurchaseModel> GetPurchaseById(int id);
         Task<PurchaseModel> AddPurchase(PurchaseModel purchase);
+        Task<bool> DeletePurchase(int purchaseId);
     }
 }

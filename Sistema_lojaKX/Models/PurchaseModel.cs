@@ -2,8 +2,9 @@
 {
     public class PurchaseModel
     {
-        public int Id { get; set; }
-        public double Value { get; set; }
-        public string Product { get; set; }
+        public int Id_Purchase { get; set; }
+        public int Id_Product { get; set; }
+        public int Id_Client { get; set; }
+
     }
 }

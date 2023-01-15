@@ -8,9 +8,9 @@ namespace Sistema_lojaKX.Data.Map
     {
         public void Configure(EntityTypeBuilder<PurchaseModel> builder)
         {
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Value).IsRequired().HasMaxLength(150);
-            builder.Property(x => x.Product).HasMaxLength(100);
+            builder.HasKey(x => x.Id_Purchase);
+            builder.Property(x => x.Id_Product).IsRequired();
+            builder.Property(x => x.Id_Client).IsRequired();
         }
     }
 }

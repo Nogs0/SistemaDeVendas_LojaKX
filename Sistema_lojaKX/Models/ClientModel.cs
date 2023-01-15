@@ -2,13 +2,10 @@
 {
     public class ClientModel
     {
-        public int Id { get; set; }
-        public string? CPF { get; set; }
-        public string? Name { get; set; }
+        public int Id_Client { get; set; }
+        public string? Cpf { get; set; }
+        public string? Name_Client { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Email { get; set; }
-        public string? Address { get; set; }
-        public int? PurchaseId { get; set; }
-        public virtual PurchaseModel? Purchase { get; set; }
     }
 }

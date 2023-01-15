@@ -18,6 +18,19 @@ namespace Sistema_lojaKX.Repositories
             await _dbcontext.SaveChangesAsync();
             return purchase;
         }
+
+        public async Task<bool> DeletePurchase(int purchaseId)
+        {
+            PurchaseModel purchase = _dbcontext.Purchases.FirstOrDefault(x=> x.Id_Purchase == purchaseId);
+            if (purchase != null)
+            {
+                throw new Exception("There are no Purchase in the DataBase");
+            }
+            _dbcontext.Purchases.Remove(purchase);
+            await _dbcontext.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<List<PurchaseModel>> GetAllPurchases()
         {
             if (_dbcontext.Purchases == null)
@@ -28,7 +41,7 @@ namespace Sistema_lojaKX.Repositories
 
         public async Task<PurchaseModel> GetPurchaseById(int id)
         {
-            PurchaseModel purchase = await _dbcontext.Purchases.FirstOrDefaultAsync(x => x.Id == id);
+            PurchaseModel purchase = await _dbcontext.Purchases.FirstOrDefaultAsync(x => x.Id_Product == id);
             if (purchase == null)
             {
                 throw new Exception($"There is no purchase with this Id : {id}");

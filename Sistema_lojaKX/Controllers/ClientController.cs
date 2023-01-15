@@ -38,7 +38,7 @@ namespace Sistema_lojaKX.Controllers
         [HttpPut("{cpf}")]
         public async Task<ActionResult<ClientModel>> UpdateClientByCPF(ClientModel _client, string cpf)
         {
-            _client.CPF= cpf;
+            _client.Cpf = cpf;
             ClientModel client = await _clientRepositories.UpdateClientByCPF(_client, cpf);
             return Ok(client);
         }

@@ -24,6 +24,7 @@ namespace Sistema_lojaKX
                 );
             builder.Services.AddScoped<IClientRepositories, ClientRepositories>();
             builder.Services.AddScoped<IPurchaseRepositories, PurchaseRepositories>();
+            builder.Services.AddScoped<IProductRepositories, ProductRepositories>();
             
             var app = builder.Build();
 
