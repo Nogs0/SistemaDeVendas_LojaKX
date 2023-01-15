@@ -1,7 +1,8 @@
 # SistemaDeVendas_LojaKX
 
 ## Descrição do projeto:
-    CRUD utilizando ASP NEt
+    CRUD utilizando C#
+Desenvolvido no Visual Studio Code 2022
 Utilizado nesse projeto:
     - ASP.NET Core Web API
     - Microsoft Entity Framework
@@ -10,5 +11,5 @@ Utilizado nesse projeto:
     - Microsoft Entity Framework.SqlServer
     - SQL Server
 
-##Instruções para rodar o SistemaDeVendas_LojaKX
+Instruções para rodar o projeto: <a href="https://github.com/Nogs0/SistemaDeVendas_LojaKX/wiki">Wiki
 
