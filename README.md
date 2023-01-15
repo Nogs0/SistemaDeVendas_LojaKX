@@ -1,6 +1,14 @@
 # SistemaDeVendas_LojaKX
 
-CRUD desenvolvido em C#, projeto proposto pela XLS Desenvolvimento de Controles.
+## Descrição do projeto:
+    CRUD utilizando ASP NEt
+Utilizado nesse projeto:
+    - ASP.NET Core Web API
+    - Microsoft Entity Framework
+    - Microsoft Entity Framework.Design
+    - Microsoft Entity Framework.Tools
+    - Microsoft Entity Framework.SqlServer
+    - SQL Server
 
-Onde, o sistema deveria abrigar uma maneira de cadastro, atualização e exclusão de clientes, preferencialmente desenvolvido em Java ou C#.
-Tendo como opcional o tipo de armazenamento dos dados. Seja em Banco de Dados, ou tratados em memória.
+##Instruções para rodar o SistemaDeVendas_LojaKX
+

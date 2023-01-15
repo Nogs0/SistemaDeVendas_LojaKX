@@ -14,6 +14,16 @@ namespace Sistema_lojaKX.Repositories
         }
         public async Task<PurchaseModel> AddPurchase(PurchaseModel purchase)
         {
+            ClientModel client = _dbcontext.Clients.FirstOrDefault(x => x.Id_Client== purchase.Id_Client);
+            ProductModel product = _dbcontext.Products.FirstOrDefault(x=>x.Id_Product== purchase.Id_Product);
+            if (client == null)
+            {
+                throw new Exception("There isn't that client!");
+            }
+            if(product == null)
+            {
+                throw new Exception("There isn't that product!");
+            }
             await _dbcontext.Purchases.AddAsync(purchase);
             await _dbcontext.SaveChangesAsync();
             return purchase;

@@ -24,7 +24,6 @@ namespace Sistema_lojaKX.Repositories
         public async Task<ClientModel> AddClient(ClientModel client)
         {
             ClientModel clientByCPF = await GetClientByCPF(client.Cpf);
-
             if (clientByCPF == null)
             {
                 await _dbcontext.Clients.AddAsync(client);
