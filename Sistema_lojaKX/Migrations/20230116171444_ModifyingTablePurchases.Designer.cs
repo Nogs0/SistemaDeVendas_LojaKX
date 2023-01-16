@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sistema_lojaKX.Data;
 
@@ -10,9 +11,10 @@ using Sistema_lojaKX.Data;
 namespace Sistema_lojaKX.Migrations
 {
     [DbContext(typeof(PurchaseSystemDBcontext))]
-    partial class PurchaseSystemDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20230116171444_ModifyingTablePurchases")]
+    partial class ModifyingTablePurchases
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

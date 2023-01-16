@@ -15,8 +15,9 @@ namespace Sistema_lojaKX.Repositories
         public async Task<PurchaseModel> AddPurchase(PurchaseModel purchase)
         {
             ClientModel client = _dbcontext.Clients.FirstOrDefault(x => x.Id_Client== purchase.Id_Client);
+            ClientModel clientcpf = _dbcontext.Clients.FirstOrDefault(x => x.Cpf == purchase.Cpf_Client);
             ProductModel product = _dbcontext.Products.FirstOrDefault(x=>x.Id_Product== purchase.Id_Product);
-            if (client == null)
+            if (client == null || clientcpf == null)
             {
                 throw new Exception("There isn't that client!");
             }
@@ -49,14 +50,14 @@ namespace Sistema_lojaKX.Repositories
 
         }
 
-        public async Task<PurchaseModel> GetPurchaseById(int id)
+        public async Task<List<PurchaseModel>> GetPurchaseByCpf(string cpf)
         {
-            PurchaseModel purchase = await _dbcontext.Purchases.FirstOrDefaultAsync(x => x.Id_Product == id);
-            if (purchase == null)
+            List<PurchaseModel> purchases = await _dbcontext.Purchases.Where(x => x.Cpf_Client == cpf).ToListAsync();
+            if (purchases.Count == 0)
             {
-                throw new Exception($"There is no purchase with this Id : {id}");
+                throw new Exception($"There is no purchase with this CPF : {cpf}");
             }
-            return purchase;
+            return purchases;
         }
     }
 }
